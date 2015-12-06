@@ -1,6 +1,10 @@
 body {
   background-color: black;
 }
+img {
+  width: 300px;
+  height: 200px;
+}
 
 .header {
   font-family: "Arial", sans-serif;

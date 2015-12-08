@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-  <html>
-    <head>
+<html ng-app="PokeAnalysis">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <meta charset="utf-8" />
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Pokemon Viewer</title>
-      <link rel="stylesheet" href="foundation-6/css/foundation.min.css" />
-      <link rel="stylesheet" type="text/css" href="main.css">
-    </head>
-    <body>
-      <div class="row align-center header"><b>Pokemon Analysis</b></div>
-      <div class="row align-center main-content">
-        <div class="medium-3 sprite"></div>
+    <title>Pokemon Viewer</title>
+    <link rel="stylesheet" href="foundation-6/css/foundation.min.css" />
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
 
-      </div>
+  <body ng-controller="PokemonController">
+    <div class="row align-center header"><b>Pokemon Analysis</b></div>
+    <div class="row align-center main-content">
+      <div class="medium-3 sprite"></div>
+      <button type="button" class="success btn" ng-click="pokemonList()">Click Me</button> {{pokemon}}
+    </div>
 
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script src="foundation-6/js/vendor/what-input.min.js"></script>
-      <script src="foundation-6/js/foundation.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
-      <script src="index.js"></script>
-    </body>
-  </html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="foundation-6/js/vendor/what-input.min.js"></script>
+    <script src="foundation-6/js/foundation.min.js"></script>
+    <script src="angular/angular.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

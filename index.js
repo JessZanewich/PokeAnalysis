@@ -13,7 +13,19 @@
 });*/
 
 
-angular.module("PokeAnalysis", [])
+angular.module("PokeAnalysis", ["ngRoute"])
+.config(["$routeProvider", function($routeProvider) {
+  $routeProvider.
+    when('/', {
+      templateUrl: "pokemonList.html",
+      controller: "PokemonController"
+    }).
+    when('/pokemon/:pokemonId', {
+      templateUrl: "singlePokemon/singlePoke.html",
+      controller: "PokemonController"
+    });
+}])
+
 .factory("PokeService", ["$http", function($http) {
   return {
     getPokeList: function() {
@@ -31,11 +43,11 @@ angular.module("PokeAnalysis", [])
 
 .controller("PokemonController", ['$scope', "PokeService", function($scope, PokeService) {
 
-  $scope.pokemonList = function() {
+  $scope.pokemonListing = function() {
     PokeService.getPokeList().then(
-      function(pokemon){
-        $scope.pokemon = pokemon;
-        console.log(pokemon);
+      function(pokemonList){
+        $scope.pokemonList = pokemonList.data.pokemon;
+        console.log(pokemon.data.pokemon);
       });
   };
 }]);

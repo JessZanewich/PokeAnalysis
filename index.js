@@ -12,9 +12,8 @@
 
 });*/
 
-
-angular.module("PokeAnalysis", ["ngRoute"])
-.config(["$routeProvider", function($routeProvider) {
+angular.module("PokeAnalysis", [])
+/*.config(["$routeProvider", function($routeProvider) {
   $routeProvider.
     when('/', {
       templateUrl: "pokemonList.html",
@@ -24,16 +23,15 @@ angular.module("PokeAnalysis", ["ngRoute"])
       templateUrl: "singlePokemon/singlePoke.html",
       controller: "PokemonController"
     });
-}])
+}])*/
 
 .factory("PokeService", ["$http", function($http) {
   return {
     getPokeList: function() {
-      var pokemon = [];
       return $http.get("http://pokeapi.co/api/v1/pokedex/1/")
         .success(function(response) {
           console.log(response + "Found");
-          pokemon = response;
+          var pokemon = response;
         }).error(function() {
           console.log("Error with pokemon retrieval");
         });

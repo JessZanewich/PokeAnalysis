@@ -11,20 +11,24 @@
   </head>
 
   <body ng-controller="PokemonController">
-    <div class="row align-center header"><b>Pokemon Analysis</b></div>
-    <div class="row align-center main-content">
-      <div class="medium-3 sprite"></div>
-      <button type="button" class="success btn" ng-click="pokemonListing()">Click Me</button>
-      <ul>
-        <li ng-repeat="pokemon in pokemonList"><button type="button" class="success btn" ng-click="pokemonRetrieval">{{pokemon.name}}</button></li>
-      </ul>
-    </div>
 
+    <div class="row align-center header"><b>Pokemon Analysis</b></div>
+    <div class="row">
+      <div class="column align-top listing">
+        <ul>
+          <li ng-repeat="pokemon in pokemonList"><button type="button" class="success btn" ng-click="pokemonRetrieval">{{pokemon.name}}</button></li>
+        </ul>
+      </div>
+      <div class="column align-top main-content">
+        <div class="medium-3 sprite"></div>
+        <button type="button" class="success btn" ng-click="pokemonListing()">Click Me</button>
+      </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="foundation-6/js/vendor/what-input.min.js"></script>
     <script src="foundation-6/js/foundation.min.js"></script>
     <script src="angular/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script> -->
     <script src="index.js"></script>
   </body>
 </html>

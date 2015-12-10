@@ -5,7 +5,9 @@ img {
   width: 300px;
   height: 200px;
 }
-
+.listing {
+  background-color: blue;
+}
 .header {
   font-family: "Arial", sans-serif;
   font-size: 32px;
@@ -15,11 +17,11 @@ img {
   border: 1px solid green;
 }
 .row {
-  background-color: red;
+  background-color: yellow;
 }
 .main-content{
   margin-top: 100px;
   height: 500px;
-  width: 700px;
+  width: 900px;
   border: 3px solid rgb(144, 5, 147);
 }

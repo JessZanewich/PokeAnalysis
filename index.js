@@ -30,22 +30,39 @@ angular.module("PokeAnalysis", [])
     getPokeList: function() {
       return $http.get("http://pokeapi.co/api/v1/pokedex/1/")
         .success(function(response) {
-          console.log(response + "Found");
+          console.log(response);
           var pokemon = response;
         }).error(function() {
-          console.log("Error with pokemon retrieval");
+          console.log("Error with pokemon list retrival");
+        });
+    },
+    getPokeInfo: function(pokeUri) {
+      return $http.get("http://pokeapi.co/" + pokeUri)
+        .success(function(response) {
+          console.log(response);
+        }).error(function() {
+          console.log("Pokemon retrival not working");
         });
     }
   };
 }])
 
 .controller("PokemonController", ['$scope', "PokeService", function($scope, PokeService) {
-
   $scope.pokemonListing = function() {
     PokeService.getPokeList().then(
       function(pokemonList){
-        $scope.pokemonList = pokemonList.data.pokemon;
-        console.log(pokemon.data.pokemon);
+        $scope.pokemonList = pokemonList.data;
+        console.log(pokemonList.data);
       });
   };
+  $scope.pokemonRetrieval = function(pokeFind) {
+
+    PokeService.getPokeInfo(pokeFind).then(
+      function(pokemonInfo){
+        $scope.pokeInfo = pokemonInfo.data;
+        console.log($scope.pokeInfo);
+      }
+    )
+  }
+    $scope.pokemonListing();
 }]);

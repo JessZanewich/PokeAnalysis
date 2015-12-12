@@ -30,7 +30,6 @@ angular.module("PokeAnalysis", [])
     getPokeList: function() {
       return $http.get("http://pokeapi.co/api/v1/pokedex/1/")
         .success(function(response) {
-          console.log(response);
           var pokemon = response;
         }).error(function() {
           console.log("Error with pokemon list retrival");
@@ -46,7 +45,6 @@ angular.module("PokeAnalysis", [])
     },
     getPokeSprite: function(pokeUri) {
       var spriteUri = pokeUri.replace("pokemon", "sprite");
-      console.log(spriteUri);
       return $http.get("http://pokeapi.co/" + spriteUri)
         .success(function(response) {
           var pokeSprite = response;
@@ -65,15 +63,16 @@ angular.module("PokeAnalysis", [])
       });
   };
   $scope.pokemonRetrieval = function(pokeFind) {
-
+    console.log(pokeFind);
     PokeService.getPokeInfo(pokeFind).then(
       function(pokemonInfo){
         $scope.pokeInfo = pokemonInfo.data;
-        console.log($scope.pokeInfo.attack);
+        console.log($scope.pokeInfo);
       }
     );
     PokeService.getPokeSprite(pokeFind).then(
       function(pokeSprite) {
+        console.log(pokeSprite.data);
         $scope.pokeSprite = "http://pokeapi.co/" + pokeSprite.data.image;
         console.log($scope.pokeSprite);
       }

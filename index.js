@@ -39,10 +39,20 @@ angular.module("PokeAnalysis", [])
     getPokeInfo: function(pokeUri) {
       return $http.get("http://pokeapi.co/" + pokeUri)
         .success(function(response) {
-          console.log(response);
+          var pokemonInfo = response;
         }).error(function() {
           console.log("Pokemon retrival not working");
         });
+    },
+    getPokeSprite: function(pokeUri) {
+      var spriteUri = pokeUri.replace("pokemon", "sprite");
+      console.log(spriteUri);
+      return $http.get("http://pokeapi.co/" + spriteUri)
+        .success(function(response) {
+          var pokeSprite = response;
+        }).error(function() {
+          console.log("Sprite retrieval issues");
+      });
     }
   };
 }])
@@ -52,7 +62,6 @@ angular.module("PokeAnalysis", [])
     PokeService.getPokeList().then(
       function(pokemonList){
         $scope.pokemonList = pokemonList.data;
-        console.log(pokemonList.data);
       });
   };
   $scope.pokemonRetrieval = function(pokeFind) {
@@ -60,9 +69,15 @@ angular.module("PokeAnalysis", [])
     PokeService.getPokeInfo(pokeFind).then(
       function(pokemonInfo){
         $scope.pokeInfo = pokemonInfo.data;
-        console.log($scope.pokeInfo);
+        console.log($scope.pokeInfo.attack);
+      }
+    );
+    PokeService.getPokeSprite(pokeFind).then(
+      function(pokeSprite) {
+        $scope.pokeSprite = "http://pokeapi.co/" + pokeSprite.data.image;
+        console.log($scope.pokeSprite);
       }
     )
-  }
+  };
     $scope.pokemonListing();
 }]);

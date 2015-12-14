@@ -12,7 +12,7 @@
 
 });*/
 
-angular.module("PokeAnalysis", [])
+angular.module("PokeAnalysis", ['mm.foundation'])
 /*.config(["$routeProvider", function($routeProvider) {
   $routeProvider.
     when('/', {
@@ -56,23 +56,31 @@ angular.module("PokeAnalysis", [])
 }])
 
 .controller("PokemonController", ['$scope', "PokeService", function($scope, PokeService) {
+  $scope.cyrrentPage = 1;
+  $scope.maxSize = 5;
+  $scope.setPage = function(pageNo) {
+    $scope.currentPage = pageNo;
+  };
+
   $scope.pokemonListing = function() {
     PokeService.getPokeList().then(
       function(pokemonList){
         $scope.pokemonList = pokemonList.data;
+        $scope.totalPokemon = pokemonList.data.pokemon.length;
+        console.log($scope.pokemonList.pokemon.length);
       });
   };
   $scope.pokemonRetrieval = function(pokeFind) {
-    console.log(pokeFind);
+/*    console.log(pokeFind);*/
     PokeService.getPokeInfo(pokeFind).then(
       function(pokemonInfo){
         $scope.pokeInfo = pokemonInfo.data;
+        $scope.totalPokemon = pokemonInfo.data;
+        console.log($scope.pokeInfo);
 
         PokeService.getPokeSprite($scope.pokeInfo.sprites[0].resource_uri).then(
           function(pokeSprite) {
-            console.log(pokeSprite.data);
             $scope.pokeSprite = "http://pokeapi.co/" + pokeSprite.data.image;
-            console.log($scope.pokeSprite);
           });
       });
 

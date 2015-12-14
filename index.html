@@ -16,8 +16,13 @@
     <div class="row align-spaced">
       <div class="medium-2 column align-top listing">
         <ul>
-          <li ng-repeat="pokemon in pokemonList.pokemon"><button type="button" class="success btn" ng-click="pokemonRetrieval(pokemon.resource_uri)">{{pokemon.name}}</button></li>
+          <li ng-repeat="pokemon in pokemonList.pokemon">
+            <button type="button" class="success btn" ng-click="pokemonRetrieval(pokemon.resource_uri)">
+              {{pokemon.name}}
+            </button>
+          </li>
         </ul>
+        <pagination total-items="totalPokemon" page="currentPage" max-size="maxSize" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boudary-links="true"></pagination>
       </div>
       <div class="medium-8 column align-top main-content">
         <div class="row">
@@ -29,9 +34,11 @@
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
     <script src="foundation-6/js/vendor/what-input.min.js"></script>
     <script src="foundation-6/js/foundation.min.js"></script>
-    <script src="angular/angular.min.js"></script>
+
     <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script> -->
     <script src="index.js"></script>
   </body>

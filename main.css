@@ -7,6 +7,10 @@ img {
   background-color: white;
   border: 1px solid black;
 }
+.title {
+  background-color: #ffa64d;
+  border: 5px solid #000099;
+}
 .listing {
   background-color: #3399ff;
 }
@@ -19,9 +23,7 @@ img {
   text-align: center;
   border: 1px solid green;
 }
-.row {
-  background-color: yellow;
-}
+
 .main-content{
   margin-top: 10px;
   height: 500px;
@@ -29,4 +31,9 @@ img {
 }
 ul {
   list-style: none;
+}
+.information {
+  background-color: red;
+  height: 50%;
+  width: 100%;
 }

@@ -76,7 +76,7 @@ angular.module("PokeAnalysis", ['mm.foundation'])
       function(pokemonInfo){
         $scope.pokeInfo = pokemonInfo.data;
         $scope.totalPokemon = pokemonInfo.data;
-        console.log($scope.pokeInfo);
+        console.log($scope.pokeInfo.egg_groups);
 
         PokeService.getPokeSprite($scope.pokeInfo.sprites[0].resource_uri).then(
           function(pokeSprite) {

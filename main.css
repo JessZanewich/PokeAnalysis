@@ -5,7 +5,7 @@ img {
   width: 300px;
   height: 200px;
   background-color: white;
-  border: 1px solid black;
+  border: 4px solid green;
 }
 .title {
   background-color: #ffa64d;
@@ -25,7 +25,6 @@ img {
 }
 
 .main-content{
-  margin-top: 10px;
   height: 500px;
   border: 3px solid rgb(144, 5, 147);
 }

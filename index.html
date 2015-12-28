@@ -24,7 +24,7 @@
         </ul>
         <pagination total-items="totalPokemon" page="currentPage" max-size="maxSize" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boudary-links="true"></pagination>
       </div>
-      <div class="medium-8 column align-top main-content">
+      <div class="medium-8 column align-top main-content align-center">
         <div class="row align-center">
           <img ng-src="{{pokeSprite}}" />
         </div>
@@ -42,6 +42,10 @@
               <tr>
                 <td><b>Type</b></td>
                 <td><p ng-repeat="type in pokeInfo.egg_groups">{{type.name}}</p></td>
+              </tr>
+              <tr>
+                <td><b>Description</b></td>
+                <td>{{pokeDescription.description}}</td>
               </tr>
             </tbody>
           </table>

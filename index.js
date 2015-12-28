@@ -1,17 +1,3 @@
-/*$(document).ready(function() {
-  $.getJSON("http://pokeapi.co/api/v1/pokedex/1/", function(response){
-    console.log(response);
-  });
-  retrieveSprite();
-  function retrieveSprite() {
-    $.getJSON("http://pokeapi.co/api/v1/sprite/1/", function(data){
-      $(".sprite").html("<img src=http://pokeapi.co" + data.image + ">");
-
-    });
-  };
-
-});*/
-
 angular.module("PokeAnalysis", ['mm.foundation'])
 /*.config(["$routeProvider", function($routeProvider) {
   $routeProvider.
@@ -51,6 +37,14 @@ angular.module("PokeAnalysis", ['mm.foundation'])
         }).error(function() {
           console.log("Sprite retrieval issues");
       });
+    },
+    getPokeDescription: function(descUri) {
+      return $http.get("http://pokeapi.co/" + descUri)
+        .success(function(response) {
+          var pokeDesc = response;
+        }).error(function() {
+          console.log("Description retrieval issue.");
+        });
     }
   };
 }])
@@ -71,19 +65,24 @@ angular.module("PokeAnalysis", ['mm.foundation'])
       });
   };
   $scope.pokemonRetrieval = function(pokeFind) {
-/*    console.log(pokeFind);*/
     PokeService.getPokeInfo(pokeFind).then(
       function(pokemonInfo){
         $scope.pokeInfo = pokemonInfo.data;
         $scope.totalPokemon = pokemonInfo.data;
-        console.log($scope.pokeInfo.egg_groups);
+        console.log($scope.pokeInfo.descriptions[0].resource_uri);
 
         PokeService.getPokeSprite($scope.pokeInfo.sprites[0].resource_uri).then(
           function(pokeSprite) {
             $scope.pokeSprite = "http://pokeapi.co/" + pokeSprite.data.image;
-          });
-      });
+        });
 
+        PokeService.getPokeDescription($scope.pokeInfo.descriptions[0].resource_uri).then(
+          function(pokemonDescription) {
+            $scope.pokeDescription = pokemonDescription.data;
+            console.log($scope.pokeDescription);
+        });
+    });
   };
+
     $scope.pokemonListing();
 }]);
